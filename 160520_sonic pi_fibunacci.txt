@@ -1,0 +1,24 @@
+in_thread do
+  with_fx :reverb, mix: 1 do
+    loop do
+      use_synth :blade
+      play choose([5, 8, 13 ,21 ,34 ,55, 89]),
+        amp: rrand(0.5, 1),
+        attack: choose([1, 2, 3, 5]),
+        release: choose([5, 8, 13, 21]),
+        pan: rrand(-0.5, 0)
+      sleep choose([1, 2, 3, 5, 8, 13])
+    end
+  end
+end
+with_fx :ring_mod, freq: 34, mix: 0.5 do
+  loop do
+    use_synth :sine
+    play choose([5, 8, 13 ,21 ,34 ,55, 89]),
+      amp: rrand(0.5, 1),
+      attack: choose([1, 2, 3, 5]),
+      release: choose([5, 8, 13, 21]),
+      pan: rrand(0, 0.5)
+    sleep choose([1, 2, 3, 5, 8, 13])
+  end
+end
